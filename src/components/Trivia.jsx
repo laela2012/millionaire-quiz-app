@@ -18,33 +18,33 @@ export default function Trivia({
         setStop(() => {
         callback();
         }, duration);
-    }
+    };
 
     const handleClick = (a) => {
         setSelectedAnswer(a);
         setClassName("answer active");
-        delay(3000, () => 
+        delay(3000, () => {
             setClassName(a.correct ? "answer correct" : "answer wrong")
-        );
-        delay(6000, () => 
-            {
-                if(a.correct) {
-                    setQuestionNumber(prev=>prev+1)
-                } else {
-                    setStop(true);
-                }
+        });
+        delay(6000, () => {
+            if(a.correct) {
+                setQuestionNumber((prev) => prev + 1);
+                setSelectedAnswer(null);
+            } else {
+                setStop(true);
             }
-        );
+        });
     };
 
   return (
     <div className="trivia">
         <div className="question">{question?.question}</div>
         <div className="answers">
-            {question?.answers.map((a)=>(
-                <div className={selectedAnswer === a ? className : "answer" } onClick={() => handleClick(a)}>{a.text}</div>
+            {question?.answers.map((a) => (
+                <div className={selectedAnswer === a ? className : "answer" } 
+                onClick={() => handleClick(a)}>{a.text}</div>
             ))}
         </div>
     </div>
-  )
-}
+  );
+};
