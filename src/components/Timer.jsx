@@ -13,7 +13,7 @@ export default function Timer({setStop, questionNumber}) {
     }, [setStop, timer]);
 
     useEffect(() => {
-        setTimer(30);
+        setTimer(15);
     }, [questionNumber]);
 
   return timer;
